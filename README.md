@@ -29,5 +29,5 @@ The current modpack being used on the Ghostheim valheim server and clients
 * Creature Level and Loot control [link](https://www.nexusmods.com/valheim/mods/495)
 * Blacksmith's tools [link](https://www.nexusmods.com/valheim/mods/566?tab=description)
 * Valheim lib [link](https://www.nexusmods.com/valheim/mods/504?)
-* Character edit button [link](https://www.nexusmods.com/valheim/mods/650?tab=files)
 * Emote Wheel [link](https://www.nexusmods.com/valheim/mods/419?tab=description)
+* Server side characters [link](https://valheim.thunderstore.io/package/Smoothbrain/ServerCharacters/)
