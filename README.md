@@ -30,3 +30,4 @@ The current modpack being used on the Ghostheim valheim server and clients
 * Emote Wheel [link](https://www.nexusmods.com/valheim/mods/419?tab=description)
 * Server side characters [link](https://valheim.thunderstore.io/package/Smoothbrain/ServerCharacters/)
 * Enhanced Harpoons [link](https://www.nexusmods.com/valheim/mods/932)
+* Better Ladder [link](https://www.nexusmods.com/valheim/mods/1054)
