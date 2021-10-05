@@ -18,19 +18,40 @@
         </member>
         <member name="P:Jotunn.Configs.ButtonConfig.Axis">
             <summary>
-                Axis string this config should be bound to. If Key and Axis are both set, Axis will be used.<br />
+                Axis string this config should be bound to.<br />
                 Use special Axis "Mouse ScrollWheel" to display the scroll icon as the key hint.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Configs.ButtonConfig._key">
+            <summary>
+                Private store for the Key property
             </summary>
         </member>
         <member name="P:Jotunn.Configs.ButtonConfig.Key">
             <summary>
-                Unity KeyCode this config should be bound to. If Key and Axis are both set, Axis will be used.
+                Unity KeyCode this config should be bound to.
             </summary>
         </member>
         <member name="P:Jotunn.Configs.ButtonConfig.Config">
             <summary>
-                BepInEx configuration entry of a KeyCode that should be used. Sets the <see cref="P:Jotunn.Configs.ButtonConfig.Key"/>
-                value of this config when added to the InputManager.
+                BepInEx configuration entry of a KeyCode that should be used.
+                Overrides the <see cref="P:Jotunn.Configs.ButtonConfig.Key"/> value of this config.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Configs.ButtonConfig._shortcut">
+            <summary>
+                Private store for the shortcut
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.ButtonConfig.Shortcut">
+            <summary>
+                BepInEx KeyboardShortcut this config should be bound to.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.ButtonConfig.ShortcutConfig">
+            <summary>
+                BepInEx configuration entry of a KeyCode that should be used.
+                Overrides the <see cref="P:Jotunn.Configs.ButtonConfig.Shortcut"/> value of this config.
             </summary>
         </member>
         <member name="P:Jotunn.Configs.ButtonConfig.Inverted">
@@ -152,6 +173,80 @@
             </summary>
             <param name="json">JSON text</param>
             <returns>Loaded list of FermenterConversionConfigs</returns>
+        </member>
+        <member name="T:Jotunn.Configs.IncineratorConversionConfig">
+            <summary>
+                Used to add new IncineratorConversions to the Incinerator
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.IncineratorConversionConfig.Station">
+            <summary>
+                The name of the station prefab this conversion is added to. Defaults to "incinerator".
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.IncineratorConversionConfig.Requirements">
+            <summary>
+                List of requirements for this conversion.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.IncineratorConversionConfig.ProducedItems">
+            <summary>
+                The amount of items one conversion yields. Defaults to 1.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.IncineratorConversionConfig.Priority">
+            <summary>
+                Priority of this conversion.
+                Lower prioritized conversions will be incinerated first when mulitple conversions requirements are met.
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.IncineratorConversionConfig.RequireOnlyOneIngredient">
+            <summary>
+                True: Requires only one of the list of ingredients to be able to produce the result.
+                False: All of the ingredients are required.
+                Defaults to false.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Configs.IncineratorConversionConfig.GetIncineratorConversion">
+            <summary>
+                Turns the IncineratorConversionConfig into a Valheim Incinerator.IncineratorConversion item.
+            </summary>
+            <returns>The Valheim Incinerator.IncineratorConversion</returns>
+        </member>
+        <member name="M:Jotunn.Configs.IncineratorConversionConfig.FromJson(System.String)">
+            <summary>
+                Loads a single IncineratorConversionConfig from a JSON string
+            </summary>
+            <param name="json">JSON text</param>
+            <returns>Loaded IncineratorConversionConfig</returns>
+        </member>
+        <member name="M:Jotunn.Configs.IncineratorConversionConfig.ListFromJson(System.String)">
+            <summary>
+                Loads a list of IncineratorConversionConfigs from a JSON string
+            </summary>
+            <param name="json">JSON text</param>
+            <returns>Loaded list of IncineratorConversionConfigs</returns>
+        </member>
+        <member name="T:Jotunn.Configs.IncineratorRequirementConfig">
+            <summary>
+                Wrapper for the <see cref="T:Incinerator.Requirement"/>
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.IncineratorRequirementConfig.Item">
+            <summary>
+                Name of the item prefab of this incinerator requirement
+            </summary>
+        </member>
+        <member name="P:Jotunn.Configs.IncineratorRequirementConfig.Amount">
+            <summary>
+                Amount that is needed to fulfill the requirement. Defaults to 1.
+            </summary>
+        </member>
+        <member name="M:Jotunn.Configs.IncineratorRequirementConfig.GetRequirement">
+            <summary>
+                Creates a Valheim Piece.Requirement from this config. 
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Jotunn.Configs.ItemConfig">
             <summary>
@@ -445,6 +540,20 @@
                 Converts the <see cref="T:Jotunn.Configs.RequirementConfig"/>s to Valheim style <see cref="T:Piece.Requirement"/> array.
             </summary>
             <returns>The Valheim <see cref="T:Piece.Requirement"/> array</returns>
+        </member>
+        <member name="M:Jotunn.Configs.PieceConfig.FromJson(System.String)">
+            <summary>
+                Loads a single PieceConfig from a JSON string
+            </summary>
+            <param name="json">JSON text</param>
+            <returns>Loaded PieceConfig</returns>
+        </member>
+        <member name="M:Jotunn.Configs.PieceConfig.ListFromJson(System.String)">
+            <summary>
+                Loads a list of PieceConfigs from a JSON string
+            </summary>
+            <param name="json">JSON text</param>
+            <returns>Loaded list of PieceConfigs</returns>
         </member>
         <member name="T:Jotunn.Configs.PieceTableConfig">
             <summary>
@@ -895,6 +1004,11 @@
         <member name="F:Jotunn.Entities.CustomItemConversion.ConversionType.Smelter">
             <summary>
                 Add a conversion to a station with the Smelter component attached.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Entities.CustomItemConversion.ConversionType.Incinerator">
+            <summary>
+                Add a conversion to a station with the Incinerator component attached.
             </summary>
         </member>
         <member name="P:Jotunn.Entities.CustomItemConversion.Type">
@@ -1778,11 +1892,6 @@
                 Our own mod config tabs
             </summary>
         </member>
-        <member name="F:Jotunn.GUI.InGameConfig.KeyInBinding">
-            <summary>
-                Key currently in the binding process
-            </summary>
-        </member>
         <member name="F:Jotunn.GUI.InGameConfig.ConfigurationKeybindings">
             <summary>
                 Cache keybinds
@@ -1827,14 +1936,6 @@
                 Save our settings
             </summary>
         </member>
-        <member name="M:Jotunn.GUI.InGameConfig.SetProperties``1(Jotunn.GUI.InGameConfig.ConfigBound{``0},System.Collections.Generic.KeyValuePair{BepInEx.Configuration.ConfigDefinition,BepInEx.Configuration.ConfigEntryBase})">
-            <summary>
-                Set the properties of the <see cref="T:Jotunn.GUI.InGameConfig.ConfigBound`1" />
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="binding"></param>
-            <param name="entry"></param>
-        </member>
         <member name="M:Jotunn.GUI.InGameConfig.CreateTextInputField(UnityEngine.Transform,System.String,UnityEngine.Color,System.String,UnityEngine.Color,System.Single)">
             <summary>
                 Create a text input field (used for string, int, float)
@@ -1859,7 +1960,7 @@
             <param name="width">Width</param>
             <returns></returns>
         </member>
-        <member name="M:Jotunn.GUI.InGameConfig.CreateToggleElement(UnityEngine.Transform,System.String,UnityEngine.Color,System.String,UnityEngine.Color,System.String,System.String,System.String,System.Single)">
+        <member name="M:Jotunn.GUI.InGameConfig.CreateToggleElement(UnityEngine.Transform,System.String,UnityEngine.Color,System.String,UnityEngine.Color,System.Single)">
             <summary>
                 Create a toggle element
             </summary>
@@ -1868,22 +1969,27 @@
             <param name="labelColor">Color of the label</param>
             <param name="description">Description text</param>
             <param name="descriptionColor">Color of the description text</param>
-            <param name="modguid">module GUID</param>
-            <param name="section">section</param>
-            <param name="key">key</param>
             <param name="width">width</param>
             <returns></returns>
         </member>
-        <member name="M:Jotunn.GUI.InGameConfig.CreateKeybindElement(UnityEngine.Transform,System.String,System.String,System.String,System.String,System.String,System.String,System.Single)">
+        <member name="M:Jotunn.GUI.InGameConfig.CreateKeybindElement(UnityEngine.Transform,System.String,System.String,System.String,System.Single)">
             <summary>
                 Create a keybinding element
             </summary>
             <param name="parent">parent transform</param>
             <param name="labelname">label text</param>
             <param name="description">description text</param>
-            <param name="modguid">module GUID</param>
-            <param name="section">section</param>
-            <param name="key">key</param>
+            ´<param name="buttonName">buttonName</param>
+            <param name="width">width</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jotunn.GUI.InGameConfig.CreateShortcutbindElement(UnityEngine.Transform,System.String,System.String,System.String,System.Single)">
+            <summary>
+                Create a KeyboardShortcut binding element
+            </summary>
+            <param name="parent">parent transform</param>
+            <param name="labelname">label text</param>
+            <param name="description">description text</param>
             ´<param name="buttonName">buttonName</param>
             <param name="width">width</param>
             <returns></returns>
@@ -1917,6 +2023,11 @@
         <member name="T:Jotunn.GUI.InGameConfig.ConfigBoundKeyCode">
             <summary>
                 KeyCode binding
+            </summary>
+        </member>
+        <member name="T:Jotunn.GUI.InGameConfig.ConfigBoundKeyboardShortcut">
+            <summary>
+                KeyboardShortcut binding
             </summary>
         </member>
         <member name="T:Jotunn.GUI.InGameConfig.ConfigBoundString">
@@ -2131,16 +2242,16 @@
         </member>
         <member name="M:Jotunn.GUI.DragWindowCntrl.ApplyDragWindowCntrl(UnityEngine.GameObject)">
             <summary>
-                Add this MonoBehaviour to a GameObject and register the EventTrigger for it
+                Add this MonoBehaviour to a GameObject
             </summary>
             <param name="go"></param>
         </member>
-        <member name="M:Jotunn.GUI.DragWindowCntrl.BeginDrag">
+        <member name="M:Jotunn.GUI.DragWindowCntrl.OnBeginDrag(UnityEngine.EventSystems.PointerEventData)">
             <summary>
                 BeginDrag event trigger
             </summary>
         </member>
-        <member name="M:Jotunn.GUI.DragWindowCntrl.Drag">
+        <member name="M:Jotunn.GUI.DragWindowCntrl.OnDrag(UnityEngine.EventSystems.PointerEventData)">
             <summary>
                 Drag event trigger
             </summary>
@@ -2848,6 +2959,12 @@
                 Apply Valheim style to a <see cref="T:UnityEngine.UI.Scrollbar"/> component.
             </summary>
             <param name="scrollbar">Component to apply the style to</param>
+        </member>
+        <member name="M:Jotunn.Managers.GUIManager.ApplySliderStyle(UnityEngine.UI.Slider)">
+            <summary>
+                Apply Valheim style to a <see cref="T:UnityEngine.UI.Slider"/> component.
+            </summary>
+            <param name="slider"></param>
         </member>
         <member name="T:Jotunn.Managers.InputManager">
             <summary>
@@ -4172,8 +4289,8 @@
             <summary>
                 Create the error message(s) from the server and client message data
             </summary>
-            <param name="server">server data</param>
-            <param name="client">client data</param>
+            <param name="serverData">server data</param>
+            <param name="clientData">client data</param>
             <returns></returns>
         </member>
         <member name="M:Jotunn.Utils.ModCompatibility.ClientVersionLowerMessage(System.Tuple{System.String,System.Version,Jotunn.Utils.CompatibilityLevel,Jotunn.Utils.VersionStrictness})">
@@ -4224,17 +4341,11 @@
                 Module data
             </summary>
         </member>
-        <member name="M:Jotunn.Utils.ModCompatibility.ModuleVersionData.Equals(Jotunn.Utils.ModCompatibility.ModuleVersionData)">
-            <inheritdoc />
-        </member>
         <member name="M:Jotunn.Utils.ModCompatibility.ModuleVersionData.ToZPackage">
             <summary>
                 Create ZPackage
             </summary>
             <returns>ZPackage</returns>
-        </member>
-        <member name="M:Jotunn.Utils.ModCompatibility.ModuleVersionData.Equals(System.Object)">
-            <inheritdoc />
         </member>
         <member name="M:Jotunn.Utils.ModCompatibility.ModuleVersionData.GetHashCode">
             <inheritdoc />
@@ -4452,6 +4563,26 @@
         <member name="F:Jotunn.Utils.CompatibilityLevel.EveryoneMustHaveMod">
             <summary>
                 Mod must be loaded on server and client. Version checking depends on the VersionStrictness.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Utils.CompatibilityLevel.ClientMustHaveMod">
+            <summary>
+                If mod is installed on the server, every client has to have it. VersionStrictness does not apply.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Utils.CompatibilityLevel.ServerMustHaveMod">
+            <summary>
+                If mod is installed on the client, the server has to have it. VersionStrictness does not apply.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Utils.CompatibilityLevel.VersionCheckOnly">
+            <summary>
+                Version check is performed when both server and client have the mod, no check if the mod is actually installed.
+            </summary>
+        </member>
+        <member name="F:Jotunn.Utils.CompatibilityLevel.NotEnforced">
+            <summary>
+                Mod is not checked at all, VersionsStrictness does not apply.
             </summary>
         </member>
         <member name="T:Jotunn.Utils.VersionStrictness">
